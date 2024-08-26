@@ -4,7 +4,7 @@ function App() {
 
   return (
     <div>
-      <FormComponent/>
+      <FormComponent value="hellow"/>
     </div>
   );
 }

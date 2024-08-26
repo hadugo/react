@@ -1,10 +1,12 @@
 import { useState } from "react"
 
-export default function(){
+export default function(param){
+
+    console.log(param)
 
     return (
         <div>
-            <p>{  }</p>
+            <p>{ param.value }</p>
         </div>
     )
 
