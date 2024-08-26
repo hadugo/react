@@ -1,10 +1,12 @@
+import { useState } from "react"
+
 export default function(){
 
-    let greetings = "hellow"
+    const [ greetings, setGreetings ] = useState("hellow")
 
     const changeGreetings = function(){
-        greetings = (greetings === 'hellow') ? 'hi' : 'hellow'
-        document.getElementsByTagName('p')[0].textContent = greetings
+        const value = (greetings === 'hellow') ? 'hi' : 'hellow'
+        setGreetings(value)
     }
     
     return (
@@ -13,4 +15,5 @@ export default function(){
             <p>{ greetings }</p>
         </div>
     )
+
 }
