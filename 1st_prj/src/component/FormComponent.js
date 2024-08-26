@@ -1,19 +1,19 @@
+import { useState } from "react"
+
 export default function(){
 
-    const okClick = function(){
-        console.log("ok Clicked")
-    }
+    const [ greetings, setGreetings ] = useState("hellow")
 
-    const showData = function(event, param){
-        console.log(event)
-        console.log(param)
+    const changeGreetings = function(){
+        const value = (greetings === 'hellow') ? 'hi' : 'hellow'
+        setGreetings(value)
     }
     
     return (
         <div>
-            <button onClick={ okClick }>OK</button>
-            <button onClick={ ()=>{ console.log("cancel Clicked") } }>Cancel</button>
-            <button onClick={ (event)=>{ showData(event, 'hellow') } }>ShowData</button>
+            <button onClick={ changeGreetings }>Change</button>
+            <p>{ greetings }</p>
         </div>
     )
+
 }
