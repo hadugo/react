@@ -1,18 +1,12 @@
 import { useState } from "react"
 
-export default function(){
+export default function(param){
 
-    const [ greetings, setGreetings ] = useState("hellow")
+    console.log(param)
 
-    const changeGreetings = function(){
-        const value = (greetings === 'hellow') ? 'hi' : 'hellow'
-        setGreetings(value)
-    }
-    
     return (
         <div>
-            <button onClick={ changeGreetings }>Change</button>
-            <p>{ greetings }</p>
+            <p>{ param.value }</p>
         </div>
     )
 
