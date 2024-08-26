@@ -1,14 +1,8 @@
+import hellowStyle from'./HellowComponent.module.css'
 const Hello = () => {
     return (
-        <p>Hellow</p>
+        <div className={hellowStyle.hellow}>Hellow</div>
     )
 }
 
 export default Hello
-
-export function Welcome(){
-    return (
-        <p>Welcome</p>
-    )
-
-}
