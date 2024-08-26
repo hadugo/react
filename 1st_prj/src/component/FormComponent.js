@@ -1,19 +1,16 @@
 export default function(){
 
-    const okClick = function(){
-        console.log("ok Clicked")
-    }
+    let greetings = "hellow"
 
-    const showData = function(event, param){
-        console.log(event)
-        console.log(param)
+    const changeGreetings = function(){
+        greetings = (greetings === 'hellow') ? 'hi' : 'hellow'
+        document.getElementsByTagName('p')[0].textContent = greetings
     }
     
     return (
         <div>
-            <button onClick={ okClick }>OK</button>
-            <button onClick={ ()=>{ console.log("cancel Clicked") } }>Cancel</button>
-            <button onClick={ (event)=>{ showData(event, 'hellow') } }>ShowData</button>
+            <button onClick={ changeGreetings }>Change</button>
+            <p>{ greetings }</p>
         </div>
     )
 }
