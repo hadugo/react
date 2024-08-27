@@ -6,6 +6,7 @@ import Footer from  './component/FooterComponent.js'
 import Wellcome from  './component/WellcomeComponent.js'
 import ShowHide from  './component/ShowHideComponent.js'
 import UseEffect from './component/UseEffectComponent.js'
+import Fetch from './component/FetchComponent.js'
 import NotFound from './component/NotFoundComponent.js'
 function App() {
 
@@ -13,6 +14,8 @@ function App() {
     { path : '/', component : <Wellcome/>, text : 'Wellcome' },
     { path : '/showHide', component : <ShowHide/>, text : 'showHide' },
     { path : '/useEffect', component : <UseEffect/>, text : 'useEffect'}, 
+    { path : '/fetch', component : <Fetch/>, text : 'fetch'}, 
+    
   ]
   return (
     <div>
