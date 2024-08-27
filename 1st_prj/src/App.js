@@ -8,16 +8,26 @@ import Hellow from  './component/HellowComponent.js'
 import NotFound from './component/NotFoundComponent.js'
 function App() {
 
+  const links = [
+    { path : '/', component : <Wellcome/> },
+    { path : '/hellow', component : <Hellow/> },
+    { path : '/*', component : <NotFound/> },
+  ]
   return (
     <div>
       <Header/>
       <BrowserRouter>
-        <Link to="/wellcome">Wellcome</Link> | <Link to="/hellow">Hellow</Link>
+        <Link to="/">Wellcome</Link> | <Link to="/hellow">Hellow</Link>
         <Routes>
-          <Route path="/" element={<Wellcome/>}/>
-          <Route path="/wellcome" element={<Wellcome/>}/>
-          <Route path="/hellow" element={<Hellow/>}/>
-          <Route path="" element={<NotFound/>}/>
+          {
+            links.map(
+              ele => {
+                return (
+                  <Route key={ele.path} path={ele.path} element={ele.component} />
+                )
+              }
+            )
+          }
         </Routes>
       </BrowserRouter>
       <Footer/>
