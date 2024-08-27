@@ -4,20 +4,20 @@ import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Header from './component/HeaderComponent.js'
 import Footer from  './component/FooterComponent.js'
 import Wellcome from  './component/WellcomeComponent.js'
-import Hellow from  './component/HellowComponent.js'
+import ShowHide from  './component/ShowHideComponent.js'
 import NotFound from './component/NotFoundComponent.js'
 function App() {
 
   const links = [
     { path : '/', component : <Wellcome/> },
-    { path : '/hellow', component : <Hellow/> },
+    { path : '/showHide', component : <ShowHide/> },
     { path : '/*', component : <NotFound/> },
   ]
   return (
     <div>
       <Header/>
       <BrowserRouter>
-        <Link to="/">Wellcome</Link> | <Link to="/hellow">Hellow</Link>
+        <Link to="/">Wellcome</Link> | <Link to="/ShowHide">IF문</Link>
         <Routes>
           {
             links.map(
