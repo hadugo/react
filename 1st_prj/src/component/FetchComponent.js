@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react"
+
+// json-server --watch ./src/db/data.json --port 3001
+
 export default function(){
+
 
     const [deptList, setDeptList] = useState([])
     const [titlList, setTitlList] = useState([])
