@@ -7,6 +7,7 @@ import Wellcome from  './component/WellcomeComponent.js'
 import ShowHide from  './component/ShowHideComponent.js'
 import UseEffect from './component/UseEffectComponent.js'
 import Fetch from './component/FetchComponent.js'
+import Grid from './component/GridComponent.js'
 import NotFound from './component/NotFoundComponent.js'
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
     { path : '/showHide', component : <ShowHide/>, text : 'showHide' },
     { path : '/useEffect', component : <UseEffect/>, text : 'useEffect'}, 
     { path : '/fetch', component : <Fetch/>, text : 'fetch'}, 
-    
+    { path : '/grid', component : <Grid/>, text : 'grid'}, 
   ]
   return (
     <div>
