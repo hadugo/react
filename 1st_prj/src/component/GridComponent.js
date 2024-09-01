@@ -1,4 +1,5 @@
-// json-server --watch ./src/db/data.json --port 3001
+// cd \Project\workspacec\react\1st_prj
+// node_modules\.bin\json-server --watch ./src/db/data.json --port 3001
 import { useEffect, useRef, useState } from "react"
 import {createGrid} from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'; // 필수 CSS
@@ -13,7 +14,15 @@ const MyGridComponent = function(){
     const cntrGridRef = useRef(null) // DOM객체는 useRef()로 선언
     const [grid, setGrid] = useState(null)
     const [grdData, setGrdData ] = useState([])
-    const [selectedData, setSelectedData] = useState(null)
+
+
+    const edIdSearch = useRef(null)
+    const edCodeSearch = useRef(null)
+    const edNameSearch = useRef(null)
+    const [selectedData, setSelectedData] = useState({id : '', code : '', name : ''})
+    const [selectedId, setSelectedId] = useState('')
+    const [selectedCode, setSelectedCode] = useState('')
+    const [selectedName, setSelectedName] = useState('')
 
     const FUNCS = {
         DATA : {
@@ -39,8 +48,10 @@ const MyGridComponent = function(){
         },
         GRID : {
             createGrid : function(gridContainer){
-                gridContainer.className = 'ag-theme-quartz'
-                gridContainer.style.height = "500px"
+                if(gridContainer){
+                    gridContainer.classList.add('ag-theme-quartz')
+                    gridContainer.style.height = "500px"
+                }
                 
                 const gridOptions = {
                     columnDefs      : [
@@ -81,7 +92,7 @@ const MyGridComponent = function(){
             },
             btnTtilClick : function(){
                 FUNCS.DATA.getData('http://localhost:3001/titl')
-            }
+            },
         },
     }
 
@@ -95,7 +106,7 @@ const MyGridComponent = function(){
         ()=>{
             if(grid) {
                 // 이미 그리드가 생성되어 있으면 그리드 파괴 후 삭제
-                FUNCS.GRID.createGrid(cntrGridRef, [grid, setGrid])
+                FUNCS.GRID.destroyGrid(cntrGridRef, [grid, setGrid])
             }
             FUNCS.GRID.createGrid(cntrGridRef.current)
 
@@ -129,16 +140,26 @@ const MyGridComponent = function(){
         [grdData] // // 데이터를 읽어온 후에 실행
     )
 
+    useEffect(
+        ()=>{
+            setSelectedId(selectedData.id)
+            setSelectedCode(selectedData.code)
+            setSelectedName(selectedData.name)
+        }, 
+        [selectedData]
+    )
+
     return (
         <div>
-            {selectedData && (
-                <div>
-                    <p>ID: {selectedData.id} , Code: {selectedData.code} , Name: {selectedData.name}</p>
-                </div>
-            )}
-            <div ref={cntrGridRef}/>
+            <div>
+                id   : <input ref={edIdSearch} value={selectedId}/>
+                code : <input ref={edCodeSearch} value={selectedCode}/>
+                name : <input ref={edNameSearch} value={selectedName}/>
+            </div>
+            <p></p>
             <button onClick={EVENTS.BUTTONS.btnDeptClick}>Depart</button>
             <button onClick={EVENTS.BUTTONS.btnTtilClick}>Title</button>
+            <div ref={cntrGridRef}/>
         </div>
     )
 }
