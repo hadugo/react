@@ -33,6 +33,7 @@ function App() {
             }
           )
         }
+        <p></p>
         <Routes>
           {
             links.map(
@@ -45,6 +46,7 @@ function App() {
           }
           <Route path="/*" element={<NotFound />} />
         </Routes>
+        <p></p>
       </BrowserRouter>
       <Footer/>
     </div>
